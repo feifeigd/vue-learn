@@ -9,6 +9,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
 
+// @Component 修饰符注明了此类为一个 Vue 组件
 @Component({
   components: {
     HelloWorld,
