@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" @click="onClick">
+    <img alt="Vue logo" src="../assets/logo.png" @click="onClick">{{message}} {{computedMsg}}
     <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
   </div>
 </template>
@@ -16,11 +16,24 @@ import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
   },
 })
 export default class Home extends Vue {
+
+  // data
   // 初始数据可以直接声明为实例的属性
   private message = 'Hello!';
+
+  // methods
   // 组件方法也可以直接声明为实例的方法
   private onClick() {
     window.alert(this.message);
+  }
+
+  // computed
+  get computedMsg(){
+    return 'computed ' + this.message;
+  }
+  // 生命周期
+  mounted(){
+    // 
   }
 }
 </script>
