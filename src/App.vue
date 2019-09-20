@@ -8,7 +8,7 @@
       <router-link to="/about">About</router-link>
     </div>
     <!-- 路由出口 -->
-    <!-- 路由匹配到的组件将渲染在这里 -->
+    <!-- 路由匹配到的组件将渲染在这里，根据当前路由动态渲染不同的页面组件 -->
     <router-view/>
   </div>
 </template>
