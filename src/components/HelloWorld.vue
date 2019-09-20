@@ -2,6 +2,7 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <p>mixin 数据：{{testMixinArg}}
+    <p>store 数据：{{info.data}}
     <RC/>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
@@ -39,12 +40,15 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import RC from './RenderComponent.vue';
 import TestMixin from '@/mixins/test-mixin';
+import { Getter } from 'vuex-class';
 
 @Component({
   components: { RC }, // 引用到的组件
   mixins: [TestMixin], // 导入其他组件的数据
 })
 export default class HelloWorld extends Vue {
+  @Getter private info: any;
+
   @Prop() private msg!: string;
 
   private mounted () {

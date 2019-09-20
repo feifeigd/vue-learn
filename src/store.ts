@@ -5,7 +5,10 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-
+    info: {
+      data: 'store data from store.ts'
+    },
+    auth: {}
   },
   mutations: {
 
@@ -13,4 +16,7 @@ export default new Vuex.Store({
   actions: {
 
   },
+  getters: {
+    info: (state) => state.info
+  }
 });
