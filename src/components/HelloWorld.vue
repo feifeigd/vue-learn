@@ -1,6 +1,8 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <p>mixin 数据：{{testMixinArg}}
+    <RC/>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
       check out the
@@ -35,10 +37,19 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
+import RC from './RenderComponent.vue';
+import TestMixin from '@/mixins/test-mixin';
 
-@Component
+@Component({
+  components: { RC }, // 引用到的组件
+  mixins: [TestMixin], // 导入其他组件的数据
+})
 export default class HelloWorld extends Vue {
   @Prop() private msg!: string;
+
+  private mounted () {
+    // console.log(this.testMixinArg);
+  }
 }
 </script>
 

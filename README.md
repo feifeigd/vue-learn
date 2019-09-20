@@ -37,3 +37,6 @@ yarn run test:unit
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+yarn run serve的tslint配置文件是 tslint.json
+yarn run lint的eslint配置文件是 .eslintrc.js
