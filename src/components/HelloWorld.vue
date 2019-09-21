@@ -38,24 +38,25 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue, Mixins } from 'vue-property-decorator';
 import Counter from './Counter.vue';
 import RC from './RenderComponent.vue';
 import TestMixin from '@/mixins/test-mixin';
 import { Getter } from 'vuex-class';
 
+/// mixins函数，可以有多个类
 @Component({
   components: { Counter, RC }, // 引用到的组件
-  mixins: [TestMixin], // 导入其他组件的数据
+  // mixins: [TestMixin], // 导入其他组件的数据，不用在这里写了
 })
-export default class HelloWorld extends Vue {
+export default class HelloWorld extends Mixins(TestMixin) {
   /// 相当于 this.$state.getters.info，取得函数info返回的结果
   @Getter private info: any;
 
   @Prop() private msg!: string;
 
   private mounted () {
-    // console.log(this.testMixinArg);
+    console.log(this.testMixinArg);
   }
 }
 </script>
