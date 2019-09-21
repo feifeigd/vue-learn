@@ -6,6 +6,17 @@ import './registerServiceWorker';
 
 Vue.config.productionTip = false;
 
+/// 统一切换标题
+router.beforeEach((to, from, next) => {
+  window.document.title = to.meta.title || '标题未配置';
+  next();
+});
+
+/// 切换到新页面之后，滚到顶端
+router.afterEach((to, from) => {
+  window.scrollTo(0, 0);
+});
+
 new Vue({
   router,
   store,
