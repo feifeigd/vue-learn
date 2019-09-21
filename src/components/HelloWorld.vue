@@ -49,6 +49,7 @@ import { Getter } from 'vuex-class';
   mixins: [TestMixin], // 导入其他组件的数据
 })
 export default class HelloWorld extends Vue {
+  /// 相当于 this.$state.getters.info，取得函数info返回的结果
   @Getter private info: any;
 
   @Prop() private msg!: string;
