@@ -23,6 +23,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
   },
   {
+    path: '/chapter7',
+    name: '第七章',
+    component: () => import(/* webpackChunkName: "chapter7" */ './views/Chapter7.vue'),
+  },
+  {
     path: '/user',
     component: User,
   },

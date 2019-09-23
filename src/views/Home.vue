@@ -16,24 +16,23 @@ import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
   },
 })
 export default class Home extends Vue {
-
   // data
   // 初始数据可以直接声明为实例的属性
   private message = 'Hello!';
 
   // methods
   // 组件方法也可以直接声明为实例的方法
-  private onClick() {
+  private onClick () {
     window.alert(this.message);
   }
 
   // computed
-  get computedMsg(){
+  get computedMsg () {
     return 'computed ' + this.message;
   }
   // 生命周期
-  mounted(){
-    // 
+  private mounted () {
+    //
   }
 }
 </script>
