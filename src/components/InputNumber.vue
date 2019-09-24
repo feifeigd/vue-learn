@@ -1,6 +1,6 @@
 <template>
     <div class="input-number">
-        <input type="text" :value="currentValue" @change="handleChange"/>
+        <input type="text" :value="currentValue" @change="handleChange" @keyup.up="handleUp" @keyup.down="handleDown"/>
         <button @click="handleDown" :disabled="currentValue <= min">-</button>
         <button @click="handleUp" :disabled="currentValue >= max">+</button>
     </div>
