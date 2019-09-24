@@ -28,6 +28,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "chapter7" */ './views/Chapter7.vue'),
   },
   {
+    path: '/chapter8',
+    name: '第八章',
+    component: () => import(/* webpackChunkName: "chapter8" */ './views/Chapter8.vue'),
+  },
+  {
     path: '/user',
     component: User,
   },
