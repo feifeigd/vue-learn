@@ -11,13 +11,13 @@ export enum DeviceType {
 }
 
 export interface IAppState {
-    device: DeviceType,
-    language: string,
+    device: DeviceType;
+    language: string;
     sidebar: {
         opened: boolean,
         withoutAnimation: boolean,
-    },
-    size: string,
+    };
+    size: string;
 }
 
 @Module({ dynamic: true, store, name: 'app' })
@@ -29,37 +29,6 @@ class App extends VuexModule implements IAppState {
         withoutAnimation: false,
     };
     public size = getSize() || 'medium';
-
-    @Mutation
-    private TOGGLE_SIDEBAR(withoutAnimation: boolean){
-        this.sidebar.opened = !this.sidebar.opened;
-        this.sidebar.withoutAnimation = withoutAnimation;
-        setSidebarStatus (this.sidebar.opened ? 'opened' : 'closed');
-    }
-
-    @Mutation
-    private CLOSE_SIDEBAR(withoutAnimation: boolean){
-        this.sidebar.opened = false;
-        this.sidebar.withoutAnimation = withoutAnimation;
-        setSidebarStatus('closed');
-    }
-
-    @Mutation
-    private TOGGLE_DEVICE(device: DeviceType){
-        this.device = device;
-    }
-
-    @Mutation
-    private SET_LANGUAGE(language: string){
-        this.language = language;
-        setLanguage(language);
-    }
-
-    @Mutation
-    private SET_SIZE(size: string){
-        this.size = size;
-        setSize(size);
-    }
 
     @Action
     public ToggleSideBar(withoutAnimation: boolean){
@@ -84,6 +53,37 @@ class App extends VuexModule implements IAppState {
     @Action
     public SetSize(size: string){
         this.SET_SIZE(size);
+    }
+
+    @Mutation
+    private TOGGLE_SIDEBAR(withoutAnimation: boolean){
+        this.sidebar.opened = !this.sidebar.opened;
+        this.sidebar.withoutAnimation = withoutAnimation;
+        setSidebarStatus(this.sidebar.opened ? 'opened' : 'closed');
+    }
+
+    @Mutation
+    private CLOSE_SIDEBAR(withoutAnimation: boolean){
+        this.sidebar.opened = false;
+        this.sidebar.withoutAnimation = withoutAnimation;
+        setSidebarStatus('closed');
+    }
+
+    @Mutation
+    private TOGGLE_DEVICE(device: DeviceType){
+        this.device = device;
+    }
+
+    @Mutation
+    private SET_LANGUAGE(language: string){
+        this.language = language;
+        setLanguage(language);
+    }
+
+    @Mutation
+    private SET_SIZE(size: string){
+        this.size = size;
+        setSize(size);
     }
 }
 export const AppModule = getModule(App);

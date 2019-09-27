@@ -34,7 +34,8 @@ const messages = {
         ...jaLocale,
         ...elementJaLocale,
     },
-}
+};
+
 export const getLocale = () => {
     const cookieLanguage = getLanguage();
     if (cookieLanguage) {
@@ -50,7 +51,8 @@ export const getLocale = () => {
     }
     // Default language is english
     return 'en';
-}
+};
+
 const i18n = new VueI18n({
     locale: getLocale(),
     messages,

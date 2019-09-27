@@ -4,9 +4,14 @@ import 'normalize.css';
 import ElementUI from 'element-ui';
 
 import App from './App.vue';
+import { AppModule } from '@/store/modules/app';
 import router from './router';  // router 实例
 import store from './store/store';  // store 实例
 import './registerServiceWorker';
+
+Vue.use(ElementUI, {
+  size: AppModule.size, // Set element-ui default size
+});
 
 Vue.config.productionTip = false;
 

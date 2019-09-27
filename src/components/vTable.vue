@@ -88,7 +88,7 @@ export default class VTable extends Vue {
     private onDataChanged(){
         this.makeData();
         const sortedColumn = this.currentColumns.filter((col) => col._sortType !== 'normal');
-        
+
         if (sortedColumn.length > 0){
             this.handleSort(sortedColumn[0]._index, sortedColumn[0]._sortType);
         }
