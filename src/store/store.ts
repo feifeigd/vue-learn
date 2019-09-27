@@ -1,16 +1,17 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
+import user from './modules/user';
+
 Vue.use(Vuex);  // 加载Vuex插件
 
 /// 导出store实例
 export default new Vuex.Store({
+  modules: {
+    user
+  },
   state: {
-    auth: {},
     count: 0, // 计数器
-    info: {
-      data: 'store data from store.ts'
-    },
     list: [ 1, 5, 8, 10, 30, 50, ],
   },
   /// 同步修改内部数据，mutation不要异步操作数据
@@ -41,7 +42,6 @@ export default new Vuex.Store({
   /// 例如组件使用 this.$state.getters.filteredList即可得到一个<10的数组
   getters: {
     filteredList: (state) => state.list.filter((item) => item < 10),
-    info: (state) => state.info,
     // 依赖其他的getter则需要两个参数
     listCount: (state, getters) => getters.filteredList.length
   }
