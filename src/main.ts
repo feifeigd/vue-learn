@@ -1,7 +1,9 @@
-import Vue from 'vue';
+import Vue, { DirectiveOptions } from 'vue';
+
+import 'normalize.css';
 import App from './App.vue';
 import router from './router';  // router 实例
-import store from './store';  // store 实例
+import store from './store/store';  // store 实例
 import './registerServiceWorker';
 
 Vue.config.productionTip = false;
