@@ -8,7 +8,7 @@ import '@/styles/index.scss';
 import App from './App.vue';
 import { AppModule } from '@/store/modules/app';
 import i18n from './lang';
-import router from './router';  // router 实例
+import router from './router/index';  // router 实例
 import store from './store/store';  // store 实例
 
 // import '@/icons/comments';
