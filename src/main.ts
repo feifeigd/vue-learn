@@ -2,15 +2,24 @@ import Vue, { DirectiveOptions } from 'vue';
 
 import 'normalize.css';
 import ElementUI from 'element-ui';
+import VueSvgIcon from 'vue-svgicon';
 
 import App from './App.vue';
 import { AppModule } from '@/store/modules/app';
 import router from './router';  // router 实例
 import store from './store/store';  // store 实例
 import './registerServiceWorker';
+import i18n from './lang';
 
 Vue.use(ElementUI, {
   size: AppModule.size, // Set element-ui default size
+  i18n: (key: string, value: string) => i18n.t(key, value),
+});
+
+Vue.use(VueSvgIcon, {
+  tagName: 'svg-icon',
+  defaultWidth: '1em',
+  defaultHeight: '1em',
 });
 
 Vue.config.productionTip = false;
