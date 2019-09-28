@@ -1,11 +1,11 @@
 import Vue from 'vue';
-import Router from 'vue-router';
+import Router, { RouteConfig } from 'vue-router';
 import Home from './views/Home.vue';
 import User from './views/User.vue';
 
 Vue.use(Router);  // 加载Router插件
 
-const routes = [
+const routes: RouteConfig[] = [
   {
     path: '/',
     name: 'home',
