@@ -1,21 +1,22 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <!-- 使用 router-link 组件来导航. -->
-      <!-- 通过传入 `to` 属性指定链接. -->
-      <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>|
-      <router-link to="/chapter7">组件详情</router-link>|
-      <router-link to="/chapter8">自定义指令</router-link>|
-      <router-link to="/chapter9">Render函数</router-link>
-    </div>
     <!-- 路由出口 -->
     <!-- 路由匹配到的组件将渲染在这里，根据当前路由动态渲染不同的页面组件 -->
     <router-view/>
+    <service-worker-update-popup/>
   </div>
 </template>
 
+<script lang="ts">
+import ServiceWorkerUpdatePopup from '@/pwa/components/ServiceWorkerUpdatePopup.vue';
+import { Component, Prop, Vue } from 'vue-property-decorator';
+@Component({
+  name: 'App',
+  components: { ServiceWorkerUpdatePopup, },
+})
+export default class App extends Vue {
+}
+</script>
 <style lang="scss">
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
