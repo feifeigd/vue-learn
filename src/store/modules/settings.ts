@@ -9,7 +9,7 @@ export interface ISettingsState {
     showSettings: boolean;
     showSidebarLogo: boolean;
     showTagsView: boolean;
-    shidebarTextTheme: boolean;
+    sidebarTextTheme: boolean;
     theme: string;
 }
 
@@ -19,7 +19,7 @@ class Settings extends VuexModule implements ISettingsState {
     public showSettings = defaultSettings.showSettings;
     public showSidebarLogo = defaultSettings.showSidebarLogo;
     public showTagsView = defaultSettings.showTagsView;
-    public shidebarTextTheme = defaultSettings.sidebarTextTheme;
+    public sidebarTextTheme = defaultSettings.sidebarTextTheme;
     public theme = elementVariables.theme;
 
     @Mutation
