@@ -3,7 +3,6 @@ import { getSidebarStatus, getSize, setSidebarStatus, setLanguage, setSize } fro
 import { getLocale } from '@/lang';
 
 import store from '@/store';
-import { TimeSelect } from 'element-ui';
 
 export enum DeviceType {
     Mobile,

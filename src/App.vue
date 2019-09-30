@@ -8,8 +8,8 @@
 </template>
 
 <script lang="ts">
-import ServiceWorkerUpdatePopup from '@/pwa/components/ServiceWorkerUpdatePopup.vue';
 import { Component, Prop, Vue } from 'vue-property-decorator';
+import ServiceWorkerUpdatePopup from '@/pwa/components/ServiceWorkerUpdatePopup.vue';
 @Component({
   name: 'App',
   components: { ServiceWorkerUpdatePopup, },
@@ -18,7 +18,7 @@ export default class App extends Vue {
 }
 </script>
 <style lang="scss">
-#app {
+/* #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -34,5 +34,5 @@ export default class App extends Vue {
       color: #42b983;
     }
   }
-}
+} */
 </style>

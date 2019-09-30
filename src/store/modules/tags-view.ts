@@ -7,13 +7,13 @@ export interface ITagView extends Partial<Route> {
     title?: string;
 }
 
-export interface ITagViewState {
+export interface ITagsViewState {
     visitedViews: ITagView[];
     cachedViews: (string | undefined)[];
 }
 
 @Module({ dynamic: true, store, name: 'tagsView' })
-class TagsView extends VuexModule implements ITagViewState {
+class TagsView extends VuexModule implements ITagsViewState {
     public visitedViews: ITagView[] = [];
     public cachedViews: (string | undefined)[] = [];
 
