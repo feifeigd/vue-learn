@@ -1,4 +1,5 @@
 
+import * as api from './api';
 import bodyParser from 'body-parser';
 import compression from 'compression';
 import cors from 'cors';
@@ -7,6 +8,7 @@ import http from 'http';
 import morgan from 'morgan';
 import path from 'path';
 import yaml from 'yamljs';
+import { accessTokenAuth } from './security';
 
 const app = express();
 const port = 9528;
@@ -26,6 +28,27 @@ app.use(compression(), morgan('dev'), cors())
 
 // Read and swagger config file
 const apiDefinition = yaml.load(path.resolve(__dirname, 'swagger.yml'));
+// Create mock functions based on swaggerConfig
+const options = {
+    security: {
+        AccessTokenAuth: accessTokenAuth
+    }
+};
+
+const connectSwagger = connector(api, apiDefinition, options);
+connectSwagger(app);
+// Print swagger router api summary
+const apiSummary = summarise(apiDefinition);
+console.log(apiSummary);
+
+// Catch 404 error
+app.use((req, res, next) => {
+    const error = new Error('Not Found');
+    res.status(404).json({
+        message: error.message,
+        error: error
+    })
+})
 
 function onError(error: any){
     if(error.syscall !== 'listen') {
