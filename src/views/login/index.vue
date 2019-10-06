@@ -51,7 +51,7 @@ import { Form as ElForm, Input } from 'element-ui';
 import { isValidUsername } from '@/utils/validate';
 import LangSelect from '@/components/LangSelect/index.vue';
 import { Route } from 'vue-router';
-import SocialSign from './compoments/SocialSign.vue';
+import SocialSign from './compoments/SocialSignin.vue';
 import { UserModule } from '@/store/modules/user';
 
 @Component({

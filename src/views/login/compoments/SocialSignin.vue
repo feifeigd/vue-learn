@@ -12,7 +12,7 @@
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 @Component
-export default class SocialSign extends Vue {
+export default class SocialSignin extends Vue {
     private wechatHandleClick(thirdpart: any) {
         alert('ok');
         // this.$store.commit('SET_AUTH_TYPE', thirdpart)
