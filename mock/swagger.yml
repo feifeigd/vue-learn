@@ -17,3 +17,38 @@ paths:
         - users
       summary: Get Users list
       description: Return a list of users
+      operationId: getUsers
+      security:
+        - AccessTokenAuth: []
+      parameters:
+        - name: name
+          in: query
+          description: Used to filter users by matched username substring
+          scheme:
+            type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              scheme:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                  data:
+                    type: object
+                    properties:
+                      items:
+                        type:
+                          array
+                        items:
+                          $ref: '#/components/schemas/User'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+  /users/register:
+    post:
+      tags:
+        - users
+      

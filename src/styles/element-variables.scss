@@ -1,2 +1,9 @@
-/* Override Element UI variables */
+/* Element Variables */
+
+// Override Element UI variables
+// 改变主题色变量
 $--color-primary: #1890ff;
+
+// Icon font path, required
+// 改变icon字体路径变量
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
