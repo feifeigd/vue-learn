@@ -29,10 +29,10 @@ export const deleteUser = (username: string) => request({
     method: 'delete',
 });
 
-export const login = (params: any) => request({
+export const login = (data: any) => request({
     url: '/users/login',
     method: 'post',
-    params,
+    data,
 });
 
 export const logout = () => request({
