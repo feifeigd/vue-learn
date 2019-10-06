@@ -40,10 +40,10 @@ module.exports = {
     }
   },
   productionSourceMap: true,
-  //publishPath: process.env.NODE_ENV === 'production' ? '/vue-typescript-admin-template/' : '/',
-  /* TODO 
+  // publishPath: process.env.NODE_ENV === 'production' ? '/vue-typescript-admin-template/' : '/',
+   
   pwa: {
     name,
     workboxPluginMode: 'InjectManifest',
-  }*/
+  }
 };
