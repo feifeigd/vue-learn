@@ -182,7 +182,7 @@ E:.
 │  │  │      index.vue
 │  │  │      
 │  │  ├─PanThumb
-│  │  │      index.vue
+│  │  │      index.vue	OK
 │  │  │      
 │  │  ├─RightPanel
 │  │  │      index.vue
@@ -407,8 +407,8 @@ E:.
 │  │      element-variables.scss.d.ts	OK
 │  │      index.scss					OK
 │  │      _mixins.scss					OK
-│  │      _svgicon.scss
-│  │      _transition.scss
+│  │      _svgicon.scss					OK
+│  │      _transition.scss				OK
 │  │      _variables.scss				OK
 │  │      _variables.scss.d.ts			OK
 │  │      
