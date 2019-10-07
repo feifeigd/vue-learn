@@ -200,7 +200,7 @@ E:.
 │  │  │      Mallki.vue
 │  │  │      
 │  │  ├─ThemePicker
-│  │  │      index.vue
+│  │  │      index.vue	OK
 │  │  │      
 │  │  ├─Tinymce
 │  │  │  │  config.ts
