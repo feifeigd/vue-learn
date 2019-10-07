@@ -369,8 +369,8 @@ E:.
 │  │  │  │      SidebarLogo.vue		OK
 │  │  │  │      
 │  │  │  └─TagsView
-│  │  │          index.vue
-│  │  │          ScrollPane.vue
+│  │  │          index.vue			OK
+│  │  │          ScrollPane.vue		OK
 │  │  │          
 │  │  └─mixin
 │  │          resize.ts
