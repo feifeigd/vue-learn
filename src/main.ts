@@ -3,6 +3,8 @@ import Vue, { DirectiveOptions } from 'vue';
 import 'normalize.css';
 import ElementUI from 'element-ui';
 import VueSvgIcon from 'vue-svgicon';
+
+import '@/styles/element-variables.scss';
 import '@/styles/index.scss';
 
 import App from './App.vue';
@@ -11,7 +13,7 @@ import i18n from './lang';
 import router from './router/index';  // router 实例
 import store from './store/index';  // store 实例
 
-// import '@/icons/comments';
+import '@/icons/components';
 // import '@/permission';
 // import '@/utils/error-log';
 // import '@/pwa/register-service-worker';
