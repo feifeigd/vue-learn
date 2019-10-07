@@ -185,7 +185,7 @@ E:.
 │  │  │      index.vue	OK
 │  │  │      
 │  │  ├─RightPanel
-│  │  │      index.vue
+│  │  │      index.vue	OK
 │  │  │      
 │  │  ├─Screenfull
 │  │  │      index.vue
@@ -417,7 +417,7 @@ E:.
 │  │      cookies.ts
 │  │      error-log.ts
 │  │      excel.ts
-│  │      index.ts
+│  │      index.ts		OK
 │  │      permission.ts
 │  │      request.ts	OK
 │  │      scroll-to.ts
