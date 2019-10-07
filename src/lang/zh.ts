@@ -9,9 +9,22 @@ export default {
         password: '密码',
     },
     navbar: {
+        dashboard: '首页',
+        github: '项目地址',
+        logOut: '退出登录',
+        profile: '个人中心',
         size: '布局大小',
+        theme: '换肤',
     },
     route: {
+
         dashboard: '首页',
+
     },
+    tagsView: {
+        close: '关闭',
+        closeAll: '关闭所有',
+        closeOthers: '关闭其他',
+        refresh: '刷新',
+    }
 };
