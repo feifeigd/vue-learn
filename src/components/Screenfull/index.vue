@@ -9,6 +9,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 import screenfull from 'screenfull';
 
 const sf = screenfull;
+
 @Component
 export default class Screenfull extends Vue {
     private isFullscreen = false;

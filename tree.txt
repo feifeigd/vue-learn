@@ -188,7 +188,7 @@ E:.
 │  │  │      index.vue	OK
 │  │  │      
 │  │  ├─Screenfull
-│  │  │      index.vue
+│  │  │      index.vue	OK
 │  │  │      
 │  │  ├─SizeSelect
 │  │  │      index.vue	OK
