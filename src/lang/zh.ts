@@ -16,6 +16,14 @@ export default {
         size: '布局大小',
         theme: '换肤',
     },
+    settings: {
+        fixedHeader: '固定 Header',
+        showSidebarLogo: '显示侧边栏 Logo',
+        showTagsView: '显示 Tags-View',
+        sidebarTextTheme: '侧边栏文字主题色',
+        theme: '主题色',
+        title: '系统布局配置',
+    },
     route: {
 
         dashboard: '首页',

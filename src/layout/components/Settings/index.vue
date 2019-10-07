@@ -25,8 +25,7 @@
                 <span>{{$t('settings.sidebarTextTheme')}}</span>
                 <el-switch v-model="sidebarTextTheme" class="drawer-switch"/>
             </div>
-        </div>
-        Settings
+        </div>        
     </div>
 </template>
 
