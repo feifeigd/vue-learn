@@ -1,4 +1,4 @@
-import { Component, Prop, Vue, Mixins, Watch } from 'vue-property-decorator';
+import { Component, Vue, Watch } from 'vue-property-decorator';
 import { AppModule, DeviceType } from '@/store/modules/app';
 
 const WIDTH = 992;  // refer to  Bootstrap's responsive design
