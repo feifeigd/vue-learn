@@ -1,4 +1,4 @@
-﻿
+
 E:.
 │  .browserslistrc
 │  .editorconfig
@@ -94,7 +94,7 @@ E:.
 ├─src
 │  │  App.vue			OK
 │  │  main.ts
-│  │  permission.ts
+│  │  permission.ts		OK
 │  │  settings.ts
 │  │  shims.d.ts
 │  │  
