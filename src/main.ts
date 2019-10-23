@@ -2,10 +2,12 @@ import Vue, { DirectiveOptions } from 'vue';
 
 import 'normalize.css';
 import ElementUI from 'element-ui';
+import ViewUI from 'view-design';
 import VueSvgIcon from 'vue-svgicon';
 
 import '@/styles/element-variables.scss';
 import '@/styles/index.scss';
+import 'view-design/dist/styles/iview.css';
 
 import App from './App.vue';
 import { AppModule } from '@/store/modules/app';
@@ -22,10 +24,12 @@ import * as filters from '@/filters';
 
 import './registerServiceWorker';
 
+Vue.use(ViewUI);
 Vue.use(ElementUI, {
   size: AppModule.size, // Set element-ui default size
   i18n: (key: string, value: string) => i18n.t(key, value),
 });
+
 
 Vue.use(VueSvgIcon, {
   tagName: 'svg-icon',
