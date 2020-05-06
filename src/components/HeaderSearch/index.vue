@@ -12,13 +12,14 @@ import Fuse from 'fuse.js'; // A lightweight fuzzy-search module
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 // import path from 'path';
 import { RouteConfig, Route } from 'vue-router';
-import { PermissionModule } from '../../store/modules/permission';
-import { AppModule } from '../../store/modules/app';
+import { PermissionModule } from '@/store/modules/permission';
+import { AppModule } from '@/store/modules/app';
 import i18n from '@/lang';
 
 @Component
-export default class HeaderSearch extends Vue {
-    private fuse?: Fuse<RouteConfig>;
+export default class HeaderSearch extends Vue {    
+
+    private fuse?: Fuse<RouteConfig, Fuse.IFuseOptions<RouteConfig>>;
     private options: RouteConfig[] = [];
     private search = '';
     private searchPool: RouteConfig[] = [];
@@ -81,7 +82,7 @@ export default class HeaderSearch extends Vue {
     }
 
     private initFuse(list: RouteConfig[]){
-        this.fuse = new Fuse(list, {
+        let options : Fuse.IFuseOptions<RouteConfig> = {
             shouldSort: true,
             threshold: 0.4,
             location: 0,
@@ -92,7 +93,8 @@ export default class HeaderSearch extends Vue {
                 { name: 'title', weight: 0.7, }, 
                 { name: 'path', weight: 0.3, }, 
             ]
-        })
+        };
+        this.fuse = new Fuse(list, options);
     }
 
     // Filter out the routes that can be displayed in the sidebar
@@ -107,7 +109,7 @@ export default class HeaderSearch extends Vue {
 
             const data:RouteConfig = {
                 // path: path.resolve(basePath, router.path),
-                path: basePath +  router.path,
+                path: basePath + router.path,
                 meta: {
                     title: [...prefixTitle]
                 }
@@ -138,7 +140,7 @@ export default class HeaderSearch extends Vue {
     private querySearch(query: string){
         if (query !== ''){
             if (this.fuse){
-                this.options = this.fuse.search(query);
+                this.options = this.fuse.search(query).map((result: Fuse.FuseResult<RouteConfig>)=>result.item);
             }
         } else {
             this.options = [];
