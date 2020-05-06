@@ -10,16 +10,17 @@
                 <span class="svg-container">
                     <svg-icon name="user"/>
                 </span>
-                <el-input ref="username" v-model="loginForm.username" :placeholder="$t('login.username')" name="username" type="text" auto-complete="on"/>
+                <el-input ref="username" v-model="loginForm.username" :placeholder="$t('login.username')" name="username" type="text" tabindex="1" auto-complete="on"/>
             </el-form-item>
-
-            <el-form-item prop="password">
-                <span class="svg-container">
-                    <svg-icon name="password"/>
-                </span>
-                <el-input ref="password" v-model="loginForm.password" :placeholder="$t('login.password')" name="password" :type="passwordType" auto-complete="on" @keyup.enter.native="handleLogin"/>
-                <span class="show-pwd" @click="showPwd"><svg-icon :name="passwordType === 'password' ? 'eye-off' : 'eye-on'"/></span>
-            </el-form-item>
+            <el-tooltip v-model="capsTooltip" content="Caps lock is On" placement="right" manual>
+                <el-form-item prop="password">
+                    <span class="svg-container">
+                        <svg-icon name="password"/>
+                    </span>
+                    <el-input :key="passwordType" ref="password" v-model="loginForm.password" :placeholder="$t('login.password')" name="password" tabindex="2" :type="passwordType" auto-complete="on" @keyup.native="checkCapslock" @blur="capsTooltip = false" @keyup.enter.native="handleLogin"/>
+                    <span class="show-pwd" @click="showPwd"><svg-icon :name="passwordType === 'password' ? 'eye-off' : 'eye-on'"/></span>
+                </el-form-item>
+            </el-tooltip>
 
             <el-button :loading="loading" type="primary" style="width: 100%; margin-bottom:30px;" @click="handleLogin">{{$t('login.logIn')}}</el-button>
 
@@ -46,7 +47,8 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
-import { Dictionary } from 'vuex';
+import { Dictionary,  } from 'vue-router/types/router';
+
 import { Form as ElForm, Input } from 'element-ui';
 import { isValidUsername } from '@/utils/validate';
 import LangSelect from '@/components/LangSelect/index.vue';
@@ -88,6 +90,7 @@ export default class Login extends Vue {
     private passwordType = 'password';
     private loading = false;
     private showDialog = false;
+    capsTooltip = false;
     private redirect?: string;
     private otherQuery: Dictionary<string> = {};
 
@@ -97,7 +100,7 @@ export default class Login extends Vue {
         // See https://github.com/vuejs/vue-router/pull/2050 for details
         const query = route.query as Dictionary<string>
         if (query) {
-            this.redirect = query.redirect
+            this.redirect = query.redirect;	// 重定向地址
             this.otherQuery = this.getOtherQuery(query)
         }
     }
@@ -110,7 +113,12 @@ export default class Login extends Vue {
         }
     }
 
-    private showPwd(){
+    checkCapslock(e: KeyboardEvent){
+        const {key} = e;
+        this.capsTooltip = key !== null && key.length === 1 && (key >='A' && key <= 'Z');
+    }
+    
+    private showPwd(){ 
         if (this.passwordType === 'password') {
             this.passwordType = '';
         } else {
@@ -124,6 +132,7 @@ export default class Login extends Vue {
             if (valid) {
                 this.loading = true;
                 await UserModule.Login(this.loginForm);
+                // 重定向
                 this.$router.push({
                     path: this.redirect || '/',
                     query: this.otherQuery,
