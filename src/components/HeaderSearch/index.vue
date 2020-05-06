@@ -87,7 +87,7 @@ export default class HeaderSearch extends Vue {
             threshold: 0.4,
             location: 0,
             distance: 100,
-            maxPatternLength: 32,
+            //maxPatternLength: 32,
             minMatchCharLength: 1,
             keys: [
                 { name: 'title', weight: 0.7, }, 

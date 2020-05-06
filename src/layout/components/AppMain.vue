@@ -20,7 +20,7 @@ export default class AppMain extends Vue{
     }
 
     get key(){
-        return this.$route.path;
+        return this.$route.path;    // 显示当前的页面
     }
 }
 </script>

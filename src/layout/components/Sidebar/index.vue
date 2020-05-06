@@ -1,3 +1,4 @@
+<!-- 左侧菜单栏 -->
 <template>
     <div :class="{'has-logo': showLogo}">
         <sidebar-logo v-if="showLogo" :collapse="isCollapse" />

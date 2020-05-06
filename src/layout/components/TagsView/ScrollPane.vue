@@ -44,11 +44,12 @@ export default class ScrollPane extends Vue {
         }
     }
 
+    // 滚动轮，左右滚动标签tag
     private handleScroll(e: MouseWheelEvent){
         const eventDelta = (e as any).wheelDelta || -e.deltaY * 40;
         const scrollContainer = this.$refs.scrollContainer as Vue;
         const scrollWrapper = scrollContainer.$refs.wrap as HTMLElement;
-        scrollWrapper.scrollLeft += eventDelta / 4;
+        scrollWrapper.scrollLeft += eventDelta / 4; // 只有水平滚动
     }
 }
 </script>
