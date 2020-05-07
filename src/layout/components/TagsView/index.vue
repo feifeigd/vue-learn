@@ -139,7 +139,7 @@ export default class TagsView extends Vue {
     }
 
     private closeOthersTags(){
-        this.$router.push(this.selectedTag);
+        this.selectedTag.fullPath && this.$router.push(this.selectedTag.fullPath);
         TagsViewModule.delOthersViews(this.selectedTag);
         this.moveToCurrentTag();
     }
@@ -155,8 +155,8 @@ export default class TagsView extends Vue {
     /// 显示最有一个页面
     private toLastView(visitedViews: ITagView[], view: ITagView){
         const lastestView = visitedViews.slice(-1)[0];
-        if(lastestView){
-            this.$router.push(lastestView);
+        if(lastestView && lastestView.fullPath){
+            this.$router.push(lastestView.fullPath);
         } else {
             // Default redirect to the home page if there is no tags-view, adjust it if you want
             if(view.name === 'Dashboard') {
