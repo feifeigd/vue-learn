@@ -57,19 +57,21 @@ export default class HeaderSearch extends Vue {
         }
     }
 
-    mouted(){
+    private mouted(){
         this.searchPool = this.generateRoutes(this.routes);
     }
 
     private click(){
         this.show = !this.show;
-        if (this.show){
-            this.$refs.headerSearchSelect && (this.$refs.headerSearchSelect as HTMLElement).focus();
+        if (this.show && this.$refs.headerSearchSelect){
+            (this.$refs.headerSearchSelect as HTMLElement).focus();
         }
     }
 
     private close(){
-        if(this.$refs.headerSearchSelect) (this.$refs.headerSearchSelect as HTMLElement).blur();
+        if(this.$refs.headerSearchSelect){
+            (this.$refs.headerSearchSelect as HTMLElement).blur();
+        }
         this.options = [];
         this.show = false;
     }
@@ -112,7 +114,7 @@ export default class HeaderSearch extends Vue {
                 meta: {
                     title: [...prefixTitle]
                 }
-            }
+            };
 
             if (router.meta && router.meta.title) {
                 // generate internationalized title
