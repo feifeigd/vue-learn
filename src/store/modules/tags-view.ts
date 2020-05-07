@@ -27,7 +27,7 @@ class TagsView extends VuexModule implements ITagsViewState {
 
     @Mutation
     private ADD_CACHED_VIEW(view: ITagView){
-        if (this.cachedViews.includes(view.name)){
+        if (!view.name || this.cachedViews.includes(view.name)){
             return;
         }
         if (!view.meta.noCache){

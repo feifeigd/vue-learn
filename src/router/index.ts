@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import Router, { RouteConfig } from 'vue-router';
-import constantRoutes from './constantRoutes';
+import constantRoutes  from './constantRoutes';
+
+export {constantRoutes, }
 
 // Layout
 import Layout from '@/layout/index.vue';
