@@ -1,18 +1,26 @@
 <template>
     <div id="tags-view-container" class="tags-view-container">
+        <!-- 滚动区域 -->
         <scroll-pane ref="scrollPane" class="tags-view-wrapper">
             <!-- 每个标签都可以弹出右键菜单 -->
             <router-link v-for="tag in visitedViews" ref="tag" :key="tag.path" :class="isActive(tag) ? 'active' : ''" 
                 :to="{path: tag.path, query: tag.query, fullPath: tag.fullPath}" tag="span" class="tags-view-item" 
                 @click.middle.native="isAffix(tag) || closeSelectedTag(tag)" @contextmenu.prevent.native="openMenu(tag, $event)">
-                {{$t('route.' + tag.meta.title)}} <span v-if="!isAffix(tag)" class="el-icon-close" @click.prevent.stop="closeSelectedTag(tag)"/>
+                <!-- tag显示标题 -->
+                {{$t('route.' + tag.meta.title)}} 
+                <!-- 关闭按钮，`首页`不显示关闭按钮 -->
+                <span v-if="!isAffix(tag)" class="el-icon-close" @click.prevent.stop="closeSelectedTag(tag)"/>
             </router-link>
         </scroll-pane>
         <!-- 显示右键菜单 -->
         <ul v-show="visible" :style="{left: left + 'px', top: top + 'px'}" class="contextmenu">
-            <li v-if="!(selectedTag.meta && selectedTag.meta.affix)" @click="closeSelectedTag(selectedTag)">{{$t('tagsView.close')}}</li>
+            <!-- 刷新 -->
             <li @click="refreshSelectedTag(selectedTag)">{{$t('tagsView.refresh')}}</li>
+            <!-- 关闭 -->
+            <li v-if="!isAffix(selectedTag)" @click="closeSelectedTag(selectedTag)">{{$t('tagsView.close')}}</li>
+            <!-- 关闭其他 -->
             <li @click="closeOthersTags">{{$t('tagsView.closeOthers')}}</li>
+            <!-- 关闭所有 -->
             <li @click="closeAllTags(selectedTag)">{{$t('tagsView.closeAll')}}</li>
         </ul>        
     </div>
@@ -20,7 +28,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
-import path from 'path';
+import path from 'path'; // @types/node
 import { PermissionModule } from '@/store/modules/permission';
 import { RouteConfig } from 'vue-router';
 import ScrollPane from './ScrollPane.vue';
@@ -32,9 +40,13 @@ import { TagsViewModule, ITagView } from '@/store/modules/tags-view';
     }
 })
 export default class TagsView extends Vue {
+    // 是否显示右键菜单
     private visible: boolean = false;
+    /// 鼠标右键位置
     private top: number = 0;
     private left: number = 0;
+
+    /// 当前鼠标右键所在的tag
     private selectedTag: ITagView = {};
     private affixTags: ITagView[] = [];
 
@@ -51,6 +63,8 @@ export default class TagsView extends Vue {
         this.addTags();
         this.moveToCurrentTag();
     }
+
+    /// 点击右键菜单区域外部，关闭右键菜单
     @Watch('visible')
     private onVisibleChange(value: boolean){
         if (value) {
@@ -65,15 +79,23 @@ export default class TagsView extends Vue {
         this.addTags();
     }
 
+    /// 当前显示的tag
     private isActive(route: ITagView){
         return route.path === this.$route.path;
     }
 
+    /// 不能关闭的tag
+    isAffix(tag: ITagView){
+        return tag.meta && tag.meta.affix;
+    }
+
+    /// 查找所有不能关闭的tag，包含子路由
     private filterAffixTags(routes: RouteConfig[], basePath = '/'){
         let tags: ITagView[] = [];
         routes.forEach((route) => {
             if (route.meta && route.meta.affix) {
                 const tagPath = path.resolve(basePath, route.path);
+                // const tagPath = basePath + '/' + route.path;
                 tags.push({
                     fullPath: tagPath,
                     path: tagPath,
@@ -96,11 +118,12 @@ export default class TagsView extends Vue {
         for (const tag of this.affixTags){
             // Must have tag name
             if (tag.name){
-                TagsViewModule.addVisitedView(tag);
+                TagsViewModule.addVisitedView(tag); // 不能关闭的，全部添加到这里
             }
         }
     }
 
+    /// 添加当前tag
     private addTags(){
         const { name } = this.$route;
         if (name){
@@ -125,12 +148,14 @@ export default class TagsView extends Vue {
         });
     }
 
+    /// 刷新
     private refreshSelectedTag(view: ITagView){
         TagsViewModule.delCachedView(view);
         const { fullPath } = view;
         this.$nextTick(() => this.$router.replace({ path: '/redirect' + fullPath }));
     }
 
+    /// 关闭
     private closeSelectedTag(view: ITagView){
         TagsViewModule.delView(view);
         if (this.isActive(view)){
@@ -138,8 +163,9 @@ export default class TagsView extends Vue {
         }
     }
 
+    /// 关闭其他
     private closeOthersTags(){
-        this.selectedTag.fullPath && this.$router.push(this.selectedTag.fullPath);
+        this.selectedTag.fullPath && this.$router.push(this.selectedTag.fullPath);  // 路由跳转到当前tag
         TagsViewModule.delOthersViews(this.selectedTag);
         this.moveToCurrentTag();
     }
@@ -168,7 +194,9 @@ export default class TagsView extends Vue {
         }
     }
 
+    /// 右键菜单
     private openMenu(tag: ITagView, e: MouseEvent){
+        // 保存右键坐标
         const menuMinWidth = 105;
         const offsetLeft = this.$el.getBoundingClientRect().left; // container margin left
         const offsetWidth = (this.$el as HTMLElement).offsetWidth;  // container width
@@ -180,10 +208,12 @@ export default class TagsView extends Vue {
             this.left = left;
         }
         this.top = e.clientY;
+        // 显示右键菜单
         this.visible = true;
         this.selectedTag = tag;
     }
 
+    /// 关闭右键菜单
     private closeMenu(){
         this.visible = false;
     }
