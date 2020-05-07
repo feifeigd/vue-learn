@@ -69,7 +69,7 @@ export default class HeaderSearch extends Vue {
     }
 
     private close(){
-        this.$refs.headerSearchSelect && (this.$refs.headerSearchSelect as HTMLElement).blur();
+        if(this.$refs.headerSearchSelect) (this.$refs.headerSearchSelect as HTMLElement).blur();
         this.options = [];
         this.show = false;
     }
@@ -82,12 +82,11 @@ export default class HeaderSearch extends Vue {
     }
 
     private initFuse(list: RouteConfig[]){
-        let options : Fuse.IFuseOptions<RouteConfig> = {
+        const options : Fuse.IFuseOptions<RouteConfig> = {
             shouldSort: true,
             threshold: 0.4,
             location: 0,
             distance: 100,
-            //maxPatternLength: 32,
             minMatchCharLength: 1,
             keys: [
                 { name: 'title', weight: 0.7, }, 
