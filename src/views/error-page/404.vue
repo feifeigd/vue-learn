@@ -2,9 +2,9 @@
     <div class="wscn-http404-container">
         <div class="wscn-http404">
             <div class="pic-404">
-                <img class="pic-404__parent" alt="404" src="@/assets/404-images/404.png">
-                <img class="pic-404__child left" alt="404" src="@/assets/404-images/404-cloud.png">
-                <img class="pic-404__child mid" alt="404" src="@/assets/404-images/404-cloud.png">
+                <img class="pic-404__parent"      alt="404" src="@/assets/404-images/404.png">
+                <img class="pic-404__child left"  alt="404" src="@/assets/404-images/404-cloud.png">
+                <img class="pic-404__child mid"   alt="404" src="@/assets/404-images/404-cloud.png">
                 <img class="pic-404__child right" alt="404" src="@/assets/404-images/404-cloud.png">
             </div>
             <div class="text-404">
@@ -19,7 +19,7 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import Vue from 'vue';
 export default class Page404 extends Vue {
     private message = '404 Page Not Found!';
 }
