@@ -43,6 +43,7 @@ export default class DashboardEditor extends Vue {
     get roles(){
         return UserModule.roles;
     }
+    private value = [20, 50];
 }
 </script>
 
