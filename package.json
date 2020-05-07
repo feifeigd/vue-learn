@@ -72,7 +72,7 @@
     "swagger-routes-express": "^3.0.4",
     "ts-jest": "^24.1.0",
     "ts-node-dev": "^1.0.0-pre.43",
-    "typescript": "^3.6.3",
+    "typescript": "^3.8.3",
     "vue-cli-plugin-style-resources-loader": "^0.1.4",
     "vue-template-compiler": "^2.6.11"
   }
