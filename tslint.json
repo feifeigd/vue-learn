@@ -10,6 +10,7 @@
     ]
   },
   "rules": {
+    "member-ordering": false,
     "quotemark": [true, "single"],
     "indent": [true, "spaces", 4],
     "interface-name": false,
